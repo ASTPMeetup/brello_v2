@@ -7,8 +7,14 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var items = require('./routes/items');
+var tags = require('./routes/tags');
+var lists = require('./routes/lists');
 
 var app = express();
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/brello_v2');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/tags', tags);
+app.use('/items', items);
+app.use('/lists', lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

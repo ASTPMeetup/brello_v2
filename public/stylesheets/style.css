@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+#itemsCollection {
+  margin: 20px;
+}
+
+#list {
+  margin: 50px;
+  background-color: #33ccff
+}
+
+#tag {
+  margin: 10px;
+}
