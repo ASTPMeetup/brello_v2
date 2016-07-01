@@ -20,11 +20,12 @@ module.exports = {
           message: 'Error getting list.'
         });
       }
-      for (list in lists){
-        ItemModel.find({ list: mongoose.Types.ObjectId(list._id) }).populate('tags').exec(function(err, items) {
+      ItemModel.find().populate('tags').exec(function(err, items) {
+        //populate items for each list
+        for(list in lists){
           list.items = items;
-        });
-      }
+        }
+      });
       return res.json(lists);
     });
   },
@@ -45,12 +46,10 @@ module.exports = {
           message: 'No such list'
         });
       }
-      var listId = list._id;
-      var thisList = list;
-      ItemModel.find({ list: mongoose.Types.ObjectId(listId) }).populate('tags').exec(function(err, items) {
-        thisList.items = items;
+      ItemModel.find({ list: mongoose.Types.ObjectId(list._id) }).populate('tags').exec(function(err, items) {
+        list.items = items;
+        return res.json(list);
       });
-      return res.json(thisList);
     });
   },
 

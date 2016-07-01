@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
-var itemSchema = new Schema({	'name' : String,	'tags' : [{	 	type: Schema.Types.ObjectId,	 	ref: 'Tag'	}],	'list': {		 type: Schema.Types.ObjectId,		 ref: 'List'	 }});
+var itemSchema = new Schema({	'name' : String,	'tags' : [{	 	type: Schema.ObjectId,	 	ref: 'Tag'	}],	'list': {		 type: Schema.ObjectId,		 ref: 'List'	 }});
 
 module.exports = mongoose.model('Item', itemSchema);

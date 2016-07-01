@@ -7,12 +7,12 @@ var ItemsCollection = Backbone.Collection.extend({
   url: '/items',
   model: ItemModel,
 
-  parse: function(objs) {
-    _.each(objs, function(obj) {
-      obj.tags = new TagsCollection(obj.get('tags'));
-    });
-    return objs;
-  }
+  // parse: function(objs) {
+  //   _.each(objs, function(obj) {
+  //     obj.tags = new TagsCollection(obj.get('tags'));
+  //   });
+  //   return objs;
+  // }
 });
 
 module.exports = ItemsCollection;
