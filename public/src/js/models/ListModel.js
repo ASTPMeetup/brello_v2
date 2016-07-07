@@ -6,16 +6,16 @@ var ListModel = Backbone.Model.extend({
   urlRoot: '/lists',
   idAttribute: '_id',
 
-  defaults: {
-    title: '',
-    items: []
-  },
-
-  // parse: function(list) {
-  //   var items = list.items || [];
-  //   list.items = new ItemsCollection(items);
-  //   return list;
+  // defaults: {
+  //   title: '',
+  //   items: []
   // },
+
+  parse: function(list) {
+    var items = list.items || [];
+    list.items = new ItemsCollection(items);
+    return list;
+  },
 
   toJSON: function(){
     var attributes = _.clone(this.attributes); //clone the attributes

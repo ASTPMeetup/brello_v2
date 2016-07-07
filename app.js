@@ -5,10 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var passport = require('./config/passport');
+var middleware = require('./routes/middleware');
+// var register = require('./routes/register');
+var login = require('./routes/login');
+var logout = require('./routes/logout');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var items = require('./routes/items');
 var tags = require('./routes/tags');
+var items = require('./routes/items');
 var lists = require('./routes/lists');
 
 var app = express();
@@ -29,10 +36,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/tags', tags);
-app.use('/items', items);
-app.use('/lists', lists);
+app.use('/login', login);
+// app.use('/register', register);
+app.use('/users', middleware.auth, users);
+app.use('/tags', middleware.auth, tags);
+app.use('/items', middleware.auth, items);
+app.use('/lists', middleware.auth, lists);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -65,5 +75,12 @@ app.use(function(err, req, res, next) {
   });
 });
 
+app.use(session({
+  secret: 'foo',
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 module.exports = app;

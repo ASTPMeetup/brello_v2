@@ -12,7 +12,7 @@ module.exports = {
   * ItemController.list()
   */
   list: function (req, res) {
-    ItemModel.find({}).populate('tags').exec(function (err, items) {
+    ItemModel.find().populate('tags').exec(function (err, items) {
       if (err) {
         return res.json(500, {
           message: 'Error getting item.'

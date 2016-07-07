@@ -10,9 +10,13 @@ var tagsCollection = new TagsCollection();
 
 $(document).ready(function(){
   listsCollection.fetch({
-    success: function(){
-      var listsCollectionView = new ListsCollectionView({collection: listsCollection});
-      $('#app').html(listsCollectionView.render().el);
+    success: function() {
+      itemsCollection.fetch({
+        success: function() {
+          var listsCollectionView = new ListsCollectionView({collection: listsCollection});
+          $('#app').html(listsCollectionView.render().el);
+        }
+      });
     }
   });
 });

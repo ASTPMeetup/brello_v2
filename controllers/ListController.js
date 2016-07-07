@@ -2,6 +2,8 @@ var ListModel = require('../models/ListModel.js');
 var ItemModel = require('../models/ItemModel.js');
 var ItemsCollection = require('../public/src/js/collections/ItemsCollection.js');
 var mongoose = require('mongoose');
+var reversePopulate = require('mongoose-reverse-populate');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 /**
 * ListController.js
@@ -20,13 +22,18 @@ module.exports = {
           message: 'Error getting list.'
         });
       }
-      ItemModel.find().populate('tags').exec(function(err, items) {
-        //populate items for each list
-        for(list in lists){
-          list.items = items;
-        }
-      });
-      return res.json(lists);
+      var opts = {
+        modelArray: lists, // the collection of primary models we are running reverse populate on
+        storeWhere: 'items', // the attribute on each of the primary models to place the foreign models
+        arrayPop: true, // tells us if the population is an array of models or another single model
+        mongooseModel: ItemModel, // the type of model (foreign) that will be reverse-populated
+        idField: 'list', // the attribute on the foreign model that connects it to the primary model
+        populate: 'tags' // optional populate call you can run on each foreign model
+      }
+
+        reversePopulate(opts, function(err, lists) { // call the reverse populate, passing in the options from above
+            return res.json(lists); // return the response after all of the populating is done
+        });
     });
   },
 
@@ -47,6 +54,7 @@ module.exports = {
         });
       }
       ItemModel.find({ list: mongoose.Types.ObjectId(list._id) }).populate('tags').exec(function(err, items) {
+        console.log(items);
         list.items = items;
         return res.json(list);
       });

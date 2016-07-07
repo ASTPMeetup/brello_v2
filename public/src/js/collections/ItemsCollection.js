@@ -9,7 +9,8 @@ var ItemsCollection = Backbone.Collection.extend({
 
   // parse: function(objs) {
   //   _.each(objs, function(obj) {
-  //     obj.tags = new TagsCollection(obj.get('tags'));
+  //     var Tags = obj.tags
+  //     obj.tags = new TagsCollection(Tags);
   //   });
   //   return objs;
   // }
