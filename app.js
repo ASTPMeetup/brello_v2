@@ -9,7 +9,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('./config/passport');
 var middleware = require('./routes/middleware');
-// var register = require('./routes/register');
+var register = require('./routes/register');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var routes = require('./routes/index');
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/login', login);
-// app.use('/register', register);
+app.use('/register', register);
 app.use('/users', middleware.auth, users);
 app.use('/tags', middleware.auth, tags);
 app.use('/items', middleware.auth, items);
