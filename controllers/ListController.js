@@ -97,7 +97,7 @@ module.exports = {
         });
       }
 
-      list.title = req.body.title ? req.body.title : list.title;			list.items = req.body.items ? req.body.items : list.items;
+      list.title = req.body.title ? req.body.title : list.title;
       list.save(function (err, list) {
         if (err) {
           return res.json(500, {

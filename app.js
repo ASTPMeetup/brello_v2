@@ -9,19 +9,19 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('./config/passport');
 var middleware = require('./routes/middleware');
-var register = require('./routes/register');
-var login = require('./routes/login');
-var logout = require('./routes/logout');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/brello_v2');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var tags = require('./routes/tags');
 var items = require('./routes/items');
 var lists = require('./routes/lists');
 
-var app = express();
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/brello_v2');
+
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,14 +35,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'foo',
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+  resave: true,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
-app.use('/login', login);
-app.use('/register', register);
 app.use('/users', middleware.auth, users);
-app.use('/tags', middleware.auth, tags);
 app.use('/items', middleware.auth, items);
+app.use('/tags', middleware.auth, tags);
 app.use('/lists', middleware.auth, lists);
-app.use('/logout', logout);
+
+// app.use('/users', users);
+// app.use('/items', items);
+// app.use('/tags', tags);
+// app.use('/lists', lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -74,13 +86,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-app.use(session({
-  secret: 'foo',
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 module.exports = app;

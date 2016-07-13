@@ -3,12 +3,7 @@ var _ = require('underscore');
 
 var TagModel = Backbone.Model.extend({
   urlRoot: '/tags',
-  idAttribute: '_id',
-
-  defaults: {
-    color: '',
-    label: ''
-  },
+  idAttribute: '_id'
 });
 
 module.exports = TagModel;

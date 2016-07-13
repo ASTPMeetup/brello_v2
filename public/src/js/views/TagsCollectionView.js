@@ -3,21 +3,23 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 
 var TagsCollectionView = Backbone.View.extend({
-  el: '<div id="tagsCollection"></div>',
+  el: '<div id="tagsCollection"><br></div>',
 
   render: function(){
-    var _this = this;
-    console.log(this.collection);
-    
-    if (_this.collection.length != 0){
-      _this.collection.each(function(tag){
-        var tagView = new TagView({model: tag});
-        _this.$el.append(tagView.render().el);
-      });
-    }
-    else {
-      var tagView = new TagView({model: this.collection});
-      _this.$el.append(tagView.render().el);
+    var $this = this;
+    $(this.el).html('');
+
+    if($this.collection.length){
+      if ($this.collection.length != 0){
+        $this.collection.each(function(tag){
+          var tagView = new TagView({model: tag});
+          $this.$el.append(tagView.render().el);
+        });
+      }
+      else {
+        var tagView = new TagView({model: this.collection});
+        $this.$el.append(tagView.render().el);
+      }
     }
     return this;
   }
