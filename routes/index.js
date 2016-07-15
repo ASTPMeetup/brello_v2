@@ -40,7 +40,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-  UserModel.findOne({ username : req.body.username.toLowerCase() }, function (err, user) {
+  UserModel.findOne({ username : req.body.username }, function (err, user) {
     if (user) {
       req.flash('error', 'The username has already been used');
       return res.redirect('/register');
@@ -57,8 +57,8 @@ router.post('/register', function(req, res, next) {
     bcrypt.hash(req.body.password, null, null, function(err, hash) {
 
       var user = new UserModel({
-        username: req.body.username.toLowerCase(),
-        password: hash,
+        username: req.body.username,
+        password: hash
       });
 
       user.save(function (error, user) {

@@ -11,7 +11,7 @@ var passport = require('./config/passport');
 var middleware = require('./routes/middleware');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/brello_v2');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/brello_v2');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

@@ -11,7 +11,7 @@ module.exports = {
   * TagController.list()
   */
   list: function (req, res) {
-    TagModel.find(function (err, tags) {
+    TagModel.find({user: req. user._id}, function (err, tags) {
       if (err) {
         return res.json(500, {
           message: 'Error getting tag.'

@@ -6,8 +6,12 @@
     <link rel='stylesheet' href='/stylesheets/bootstrap.css'/>
   </head>
   <body>
+    <figure id="logout_figure">
+      <a href="/logout"><img src="../images/logout.ico" id="logout">
+      <figcaption>logout</figcaption></a>
+    </figure>
     <h1 id="brello"><strong><%= title %></strong></h1>
-    <p id="user_info">Signed in as <%= username %></p>
+    <h4 id="user_info">Signed in as <%= username %></h4>
     <br>
     <br>
     <div id="app"></div>
