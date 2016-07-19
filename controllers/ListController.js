@@ -3,7 +3,6 @@ var ItemModel = require('../models/ItemModel.js');
 var ItemsCollection = require('../public/src/js/collections/ItemsCollection.js');
 var mongoose = require('mongoose');
 var reversePopulate = require('mongoose-reverse-populate');
-var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 /**
 * ListController.js
