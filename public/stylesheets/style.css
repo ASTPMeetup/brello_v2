@@ -1,7 +1,15 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #f2f2f2;
-  padding: 25px;
+  padding-top: 60px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+#login-body {
+  background-color: #fff;
+  text-align: center;
 }
 
 a {
@@ -68,7 +76,9 @@ a {
       text-align: center;
   }
   body {
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 60px;
   }
 }
 
@@ -117,9 +127,11 @@ a {
   width: 600px;
 }
 
-.title_form > input:focus, #form > input:focus, .title_form {
+.title_form > input:focus,
+#form > input:focus,
+.title_form {
   outline: none;
-  background-color: none;
+  background-color: transparent;
 }
 
 .new_content_input > input:focus,
@@ -135,8 +147,9 @@ a {
 }
 
 .new_content_input, .new_content_input > input:focus {
-  font-size: 30px;
-  width: 480px;
+  font-size: 22px;
+  width: 470px;
+  margin-right: 10px;
   background-color: transparent;
   border: none;
   color: #bfbfbf;
@@ -144,7 +157,7 @@ a {
   outline: none;
 }
 
-#edit_form > .button {
+#edit_form > .button, #login_form > .button {
   background: transparent;
   border:  1px solid white;
   color: #ffffff;
@@ -170,5 +183,45 @@ a {
 figcaption {
   font-size: 10px;
   color: red;
+}
 
+.login_input {
+  text-align: center;
+  font-size: 30px;
+  height: 40px;
+  text-decoration: none;
+  color: #737373;
+  outline: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.login_input > input:focus {
+  width: 280px;
+  font-size: 30px;
+  height: 40px;
+  text-decoration: none;
+  color: #737373;
+  outline: none;
+  background: transparent;
+}
+
+#login_header {
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.login_form > .button {
+  margin-top: 20px;
+  text-align: center;
+  color: #999999;
+  text-decoration: none;
+  padding: 0px;
+  background: transparent;
+  height: 28px;
+  font-size: 15px;
+  border-radius: 10px;
+  width: 200px;
 }

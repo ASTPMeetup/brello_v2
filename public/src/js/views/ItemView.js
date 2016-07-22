@@ -12,7 +12,7 @@ var ItemView = Backbone.View.extend({
     <img src="../../../images/delete.png" id="delete">\
     <img src="../../../images/update.png" id="update">\
     </span>\
-    <h2 id="name_title"><%= name %></h2>\
+    <h3 id="name_title"><%= name %></h3>\
   '),
 
   events: {

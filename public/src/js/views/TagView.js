@@ -17,4 +17,15 @@ var TagView = Backbone.View.extend({
   }
 });
 
+// $(myDraggable).draggable({
+//     helper:"clone",
+//     containment:"document"
+// });
+//
+// $(myDroppable).droppable({
+//     drop:function(event, ui) {
+//         ui.draggable.detach().appendTo($(this));
+//     }
+// });
+
 module.exports = TagView;
