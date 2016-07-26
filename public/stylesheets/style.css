@@ -225,3 +225,9 @@ figcaption {
   border-radius: 10px;
   width: 200px;
 }
+
+@media (max-width: 767px){
+  #options, #update, #delete {
+    height: 30px;
+  }
+}
