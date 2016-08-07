@@ -8,10 +8,10 @@ var ListView = Backbone.View.extend({
 
   el: '<div id="list"></div>',
 
-  // initialize: function() {
-  //   this.listenTo(this.model, "sync", this.render);
-  //   this.listenTo(this.model, "all", this.render);
-  // },
+  initialize: function() {
+    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, 'update', this.render);
+  },
 
   template: _.template('<div><span id="options">\
     <img src="../../../images/delete.png" id="delete">\
@@ -21,7 +21,6 @@ var ListView = Backbone.View.extend({
   '),
 
   itemFormTemplate: _.template('\
-    <br>\
     <form name="item_form" id="item_form">\
         <input form="form" name="item_content" type="text" class="content_input" align="left" placeholder=" add item" required>\
         <input type="submit" value="submit" class="button" align="right">\

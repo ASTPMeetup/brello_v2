@@ -5,6 +5,10 @@ var Backbone = require('backbone');
 var TagsCollectionView = Backbone.View.extend({
   el: '<div id="tagsCollection"><br></div>',
 
+  initialize: function() {
+    this.listenTo(this.collection, "add", this.render);
+  },
+
   render: function(){
     var $this = this;
     $(this.el).html('');

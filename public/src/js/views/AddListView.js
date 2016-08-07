@@ -7,10 +7,6 @@ var AddListView = Backbone.View.extend({
 
   el: '<div id="list"></div>',
 
-  initialize: function(){
-    this.collection.on('update', this.render, this);
-  },
-
   template: _.template('<h1 class="list_title" id="<% id %>"><%= title %></h1>'),
 
   formTemplate: _.template('\

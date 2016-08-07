@@ -49,7 +49,7 @@ module.exports = {
     var item = new ItemModel({
 			name : req.body.name,
 			tags : req.body.tags,
-      list: req.body.list
+      list : req.body.list
     });
 
     item.save(function (err, item) {
@@ -82,7 +82,8 @@ module.exports = {
       }
 
       item.name = req.body.name ? req.body.name : item.name;
-			item.list = req.body.list ? req.body.list : item.list;
+      item.list = req.body.list ? req.body.list : item.list;
+      item.tags = req.body.tags ? req.body.tags : item.tags;
 
       item.save(function (err, item) {
         if (err) {
@@ -95,7 +96,9 @@ module.exports = {
             message: 'No such item'
           });
         }
-        return res.json({ _id: item.id, name: item.name});
+        ItemModel.findOne({_id: id}).populate('tags').exec(function (err, item) {
+          return res.json(item);
+        });
       });
     });
   },

@@ -7,8 +7,8 @@ var ListsCollectionView = Backbone.View.extend({
   el: '<div id="columns"></div>',
 
   initialize: function() {
-    this.listenTo(this.collection, 'update', this.render);
-    this.listenTo(this.collection, "sync", this.render);
+    // this.listenTo(this.collection, 'update', this.render);
+    // this.listenTo(this.collection, "add", this.render);
   },
 
   template: _.template('\

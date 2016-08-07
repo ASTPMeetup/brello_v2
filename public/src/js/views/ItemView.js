@@ -1,11 +1,36 @@
 var TagsCollectionView = require('./TagsCollectionView');
 var ItemFormView = require('./ItemFormView');
+var TagModel = require('../models/TagModel');
 var _ = require('underscore');
 var Backbone = require('backbone');
 
 var ItemView = Backbone.View.extend({
-
   el: '<div class="jumbotron" id="item_model"></div>',
+
+  initialize: function() {
+    this.listenTo(this.model, "save", this.render);
+    this.listenTo(this.model, "change:name", this.render);
+    this.listenTo(this.model, "change:tags", this.render);
+
+    var $this = this;
+
+    $(this.el).droppable({
+        drop:function(event, ui) {
+          var droppedTag = $(ui.draggable).data("backbone-view");
+          var newTag = new TagModel({ _id: droppedTag.get('_id'), color: droppedTag.get('color'), label: droppedTag.get('label')});
+          newTag.fetch();
+          ui.draggable.detach();
+
+          newTag.save(null,{
+            success: function(){
+              var tagList = $this.model.get('tags');
+              tagList.add(newTag);
+              $this.model.save();
+            }
+          });
+        }
+    });
+  },
 
   template: _.template('\
     <span id="options">\
@@ -27,7 +52,9 @@ var ItemView = Backbone.View.extend({
 
   updateForm: function(e){
     e.preventDefault();
+    var $this = this;
     var $target = $(e.currentTarget).closest('div');
+    var $targetCont
     var editFormView = new ItemFormView({model: this.model});
     editFormView.render();
     $target.empty();
@@ -36,12 +63,19 @@ var ItemView = Backbone.View.extend({
 
 
   render: function(){
+    $(this.el).html('');
+
     this.$el.append(this.template({
       name: this.model.get('name')
     }));
     var tagsArray = this.model.get('tags');
+    var noTags;
     if (tagsArray.length != 0) {
       var tagListView = new TagsCollectionView({collection: tagsArray});
+      this.$el.append(tagListView.render().el);
+    }
+    else {
+      var tagListView = new TagsCollectionView({collection: ""});
       this.$el.append(tagListView.render().el);
     }
     return this;

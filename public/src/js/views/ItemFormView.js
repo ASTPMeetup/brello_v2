@@ -23,7 +23,13 @@ var ItemFormView = Backbone.View.extend({
       var $form = $(e.currentTarget);
       var itemUpdate = $form.find('[name="new_content"]').val();
       this.model.set('name', itemUpdate);
-      this.model.save();
+      // this.model.save();
+      this.model.save(null, {
+        parseModel: false,
+        success: function() {
+          console.log('kewl!');
+        }
+      });
     },
 
     render: function() {

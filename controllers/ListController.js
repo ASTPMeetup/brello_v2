@@ -53,7 +53,6 @@ module.exports = {
         });
       }
       ItemModel.find({ list: mongoose.Types.ObjectId(list._id) }).populate('tags').exec(function(err, items) {
-        console.log(items);
         list.items = items;
         return res.json(list);
       });
