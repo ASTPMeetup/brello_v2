@@ -233,11 +233,6 @@ figcaption {
   width: 200px;
 }
 
-#tagsCollection {
-  height: 30px;
-  padding-top: 4px;
-}
-
 @media (max-width: 767px){
   #options, #update, #delete {
     height: 30px;
