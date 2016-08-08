@@ -270,6 +270,7 @@ figcaption {
 }
 
 #hide_menu {
+  margin-left: 5px;
   float: right;
   padding: 5px;
   color: #000000;

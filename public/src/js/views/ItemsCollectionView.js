@@ -6,7 +6,7 @@ var ItemsCollectionView = Backbone.View.extend({
 
   initialize: function(){
     this.collection.on('add', this.render, this);
-    $(this.el).sortable({});
+    // $(this.el).sortable({});
   },
 
   el: '<div id="itemsCollection"></div>',
