@@ -33,6 +33,7 @@ a {
   margin-right: 5px;
   padding: 5px;
   border-radius: 5px;
+  display: inline-block;
 }
 
 #item_model {
@@ -182,14 +183,16 @@ a {
   height: 50px;
 }
 
-#logout_figure:hover {
+#logout_figure:hover, #logout_figure:hover > figcaption {
   opacity: 1;
+  display: block;
 }
 
 figcaption {
+  margin-top: 5px;
   text-align: center;
-  font-size: 10px;
-  color: red;
+  font-size: 12px;
+  display: none;
 }
 
 .login_input {
@@ -271,6 +274,21 @@ figcaption {
 
 #hide_menu {
   float: right;
-  padding: 5px;
+  padding: 10px;
   color: #000000;
+}
+
+.delete_tag {
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 12px;
+  opacity: 0.5;
+}
+
+#add_tag:hover > figcaption {
+  display: block;
+}
+
+figure:hover > figcaption {
+  display: block;
 }

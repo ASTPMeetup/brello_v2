@@ -1,7 +1,7 @@
 window.$ = window.jQuery = require('jquery');
 var ListsCollectionView = require('./views/ListsCollectionView');
 var ListsCollection = require('./collections/ListsCollection');
-var TagsCollectionView = require('./views/TagsCollectionView');
+var TagsBarView = require('./views/TagsBarView');
 var TagsCollection = require('./collections/TagsCollection');
 
 var listsCollection = new ListsCollection();
@@ -17,8 +17,8 @@ $(document).ready(function(){
 
   tagsMenu.fetch({
     success: function(){
-      var tagsList = new TagsCollectionView({collection: tagsMenu});
-      $('#tag_menu').children().append(tagsList.render().el);
+      var tagsBar = new TagsBarView({collection: tagsMenu});
+      $('#tag_menu').children().append(tagsBar.render().el);
     }
   });
 

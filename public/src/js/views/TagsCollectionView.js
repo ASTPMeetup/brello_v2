@@ -17,12 +17,12 @@ var TagsCollectionView = Backbone.View.extend({
       if ($this.collection.length != 0){
         $this.collection.each(function(tag){
           var tagView = new TagView({model: tag});
-          $this.$el.prepend(tagView.render().el);
+          $this.$el.append(tagView.render().el);
         });
       }
       else {
         var tagView = new TagView({model: this.collection});
-        $this.$el.prepend(tagView.render().el);
+        $this.$el.append(tagView.render().el);
       }
     }
     return this;

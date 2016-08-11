@@ -6,11 +6,6 @@ var _ = require('underscore');
 var ListsCollectionView = Backbone.View.extend({
   el: '<div id="columns"></div>',
 
-  initialize: function() {
-    // this.listenTo(this.collection, 'update', this.render);
-    // this.listenTo(this.collection, "add", this.render);
-  },
-
   template: _.template('\
     <div id="list">\
         <form name="list_form" class="title_form">\

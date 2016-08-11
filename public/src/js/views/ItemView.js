@@ -1,6 +1,8 @@
 var TagsCollectionView = require('./TagsCollectionView');
 var ItemFormView = require('./ItemFormView');
 var TagModel = require('../models/TagModel');
+var TagsCollection = require('../collections/TagsCollection');
+var TagsBarView = require('./TagsBarView');
 var _ = require('underscore');
 var Backbone = require('backbone');
 
@@ -17,7 +19,11 @@ var ItemView = Backbone.View.extend({
     $(this.el).droppable({
         drop:function(event, ui) {
           var droppedTag = $(ui.draggable).data("backbone-view");
-          var newTag = new TagModel({ _id: droppedTag.get('_id'), color: droppedTag.get('color'), label: droppedTag.get('label')});
+          var newTag = new TagModel({
+            _id: droppedTag.get('_id'),
+            color: droppedTag.get('color'),
+            label: droppedTag.get('label')
+          });
           newTag.fetch();
           ui.draggable.detach();
 
@@ -26,6 +32,15 @@ var ItemView = Backbone.View.extend({
               var tagList = $this.model.get('tags');
               tagList.add(newTag);
               $this.model.save();
+
+              var refreshBar = new TagsCollection();
+              refreshBar.fetch({
+                success: function(){
+                  var tagsBar = new TagsBarView({collection: refreshBar});
+                  $('#tag_menu').find('#tagsCollection').remove();
+                  $('#tag_menu').children().append(tagsBar.render().el);
+                }
+              });
             }
           });
         }
@@ -41,13 +56,22 @@ var ItemView = Backbone.View.extend({
   '),
 
   events: {
-    "click #delete": "removeItem",
-    "click #update": "updateForm"
+    "click #delete": "deleteItem",
+    "click #update": "updateForm",
+    "click .delete_tag": "removeTag"
   },
 
-  removeItem: function(){
+  deleteItem: function(){
     this.model.destroy();
     this.remove();
+  },
+
+  removeTag: function(e) {
+    var itemTags = this.model.get('tags');
+    var $tagID = $(e.currentTarget).attr('id');
+    var tag2remove = itemTags.get($tagID);
+    itemTags.remove(tag2remove);
+    this.model.save();
   },
 
   updateForm: function(e){
