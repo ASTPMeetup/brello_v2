@@ -25,7 +25,7 @@ var ItemView = Backbone.View.extend({
             label: droppedTag.get('label')
           });
           newTag.fetch();
-          ui.draggable.detach();
+
 
           newTag.save(null,{
             success: function(){
@@ -43,6 +43,7 @@ var ItemView = Backbone.View.extend({
               });
             }
           });
+          ui.draggable.detach();
         }
     });
   },
