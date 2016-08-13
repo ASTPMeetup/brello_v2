@@ -77,7 +77,7 @@ module.exports = {
         });
       }
 
-      tag.label = req.body.label ? req.body.label : tag.label;			tag.color = req.body.color ? req.body.color : tag.color;
+      tag.label = req.body.label ? req.body.label : tag.label;			tag.color = req.body.color ? req.body.color : tag.color;      tag._id = req.body.id ? req.body.id : tag._id;
       tag.save(function (err, tag) {
         if (err) {
           return res.json(500, {
