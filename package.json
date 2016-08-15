@@ -20,6 +20,7 @@
     "express": "~4.13.4",
     "express-session": "^1.14.0",
     "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0",
     "jquery": "^3.0.0",
     "mongoose": "^4.5.2",
     "mongoose-reverse-populate": "^1.1.0",
@@ -33,6 +34,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
+    "gulp-install": "^0.6.0",
     "nodemon": "^1.9.2"
   }
 }
