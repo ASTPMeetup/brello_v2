@@ -18,6 +18,7 @@ var users = require('./routes/users');
 var tags = require('./routes/tags');
 var items = require('./routes/items');
 var lists = require('./routes/lists');
+var port=Number(process.env.PORT || 3000);
 
 
 
