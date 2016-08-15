@@ -45,8 +45,7 @@ module.exports = {
   * TagController.create()
   */
   create: function (req, res) {
-    var tag = new TagModel({      _id   : req.body.id,			label : req.body.label,			color : req.body.color
-    });
+    var tag = new TagModel({			label : req.body.label,			color : req.body.color    });
 
     tag.save(function (err, tag) {
       if (err) {
@@ -77,7 +76,7 @@ module.exports = {
         });
       }
 
-      tag.label = req.body.label ? req.body.label : tag.label;			tag.color = req.body.color ? req.body.color : tag.color;      tag.id = req.body.id ? req.body.id : tag.id;
+      tag.label = req.body.label ? req.body.label : tag.label;			tag.color = req.body.color ? req.body.color : tag.color;
       tag.save(function (err, tag) {
         if (err) {
           return res.json(500, {

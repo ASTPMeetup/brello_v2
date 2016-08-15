@@ -20,7 +20,6 @@ var ItemView = Backbone.View.extend({
         drop:function(event, ui) {
           var droppedTag = $(ui.draggable).data("backbone-view");
           var newTag = new TagModel({
-            _id: droppedTag.get('_id'),
             color: droppedTag.get('color'),
             label: droppedTag.get('label')
           });
