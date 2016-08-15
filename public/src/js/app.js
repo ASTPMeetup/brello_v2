@@ -3,9 +3,10 @@ var ListsCollectionView = require('./views/ListsCollectionView');
 var ListsCollection = require('./collections/ListsCollection');
 var TagsBarView = require('./views/TagsBarView');
 var TagsCollection = require('./collections/TagsCollection');
+var Backbone = require('backbone');
 
 var listsCollection = new ListsCollection();
-var tagsMenu = new TagsCollection();
+var allTags = new TagsCollection();
 
 $(document).ready(function(){
   listsCollection.fetch({
@@ -15,8 +16,9 @@ $(document).ready(function(){
     }
   });
 
-  tagsMenu.fetch({
+  allTags.fetch({
     success: function(){
+      var tagsMenu = new Backbone.Collection(allTags.first(6));
       var tagsBar = new TagsBarView({collection: tagsMenu});
       $('#tag_menu').children().append(tagsBar.render().el);
     }

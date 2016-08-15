@@ -7,11 +7,14 @@ var TagView = Backbone.View.extend({
   el: '<span id="tag"></span>',
 
   initialize: function() {
+    var $this = this;
+
     $(this.el).draggable({
         cancel: ".jumbotron",
         appendTo: ".jumbotron",
         containment:"document",
-        opacity: 0.8
+        opacity: 0.8,
+        revert: true
     });
     $(this.el).data("backbone-view", this.model);
   },

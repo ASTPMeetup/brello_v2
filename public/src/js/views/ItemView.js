@@ -24,25 +24,13 @@ var ItemView = Backbone.View.extend({
             label: droppedTag.get('label')
           });
           newTag.fetch();
-
-
           newTag.save(null,{
             success: function(){
               var tagList = $this.model.get('tags');
               tagList.add(newTag);
               $this.model.save();
-
-              var refreshBar = new TagsCollection();
-              refreshBar.fetch({
-                success: function(){
-                  var tagsBar = new TagsBarView({collection: refreshBar});
-                  $('#tag_menu').find('#tagsCollection').remove();
-                  $('#tag_menu').children().append(tagsBar.render().el);
-                }
-              });
             }
           });
-          ui.draggable.detach();
         }
     });
   },
