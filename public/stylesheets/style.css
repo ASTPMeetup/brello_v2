@@ -291,3 +291,13 @@ figcaption {
 figure:hover > figcaption {
   display: block;
 }
+
+#intro {
+  text-align: center;
+  z-index: -1;
+  font-size: 16px;
+}
+
+#app {
+  z-index: 1;
+}
