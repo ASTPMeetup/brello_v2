@@ -59,18 +59,18 @@ a {
 
 #columns {
   color: #ffffff;
-  -moz-column-count: 3;
+  -moz-column-count: 2;
   -moz-column-gap: 10px;
   -moz-column-fill: auto;
   -webkit-column-count: 2;
   -webkit-column-gap: 10px;
   -webkit-column-fill: auto;
   column-count: 2;
-  column-gap: 15px;
+  column-gap: 10px;
   column-fill: auto;
 }
 
-@media (max-width: 1435px) {
+@media (max-width: 1350px) {
   #columns {
       column-count: 1;
       text-align: center;
@@ -88,7 +88,7 @@ a {
 }
 
 #list_form, #edit_form {
-  width: 600px;
+  width: 500px;
 }
 
 .button {
@@ -113,7 +113,7 @@ a {
 #title_input, .content_input{
   font-size: 20px;
   height: 20px;
-  width: 525px;
+  width: 425px;
   margin-right: 5px;
   background-color: transparent;
   border: none;
@@ -124,7 +124,7 @@ a {
 }
 
 .title_form {
-  width: 600px;
+  width: 500px;
 }
 
 .title_form > input:focus,
