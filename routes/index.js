@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     res.redirect('/login');
   } else {
     res.render('index', {
-      title: 'Brello - trello but better!',
+      title: 'Brello - Trello but better!',
       username: req.user.username
     });
   }

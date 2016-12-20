@@ -28,10 +28,12 @@ $(document).ready(function(){
   $('#add_tag').on('click', function(e){
     e.preventDefault();
     $('#tag_menu').css('display', 'block');
+    $('#addImage').animate({'height': '60px'}, 'slow');
   });
 
   $('#hide_menu').on('click', function(e){
     e.preventDefault();
     $('#tag_menu').css('display', 'none');
+    $('#addImage').animate({'height': '40px'}, 'slow');
   });
 });
