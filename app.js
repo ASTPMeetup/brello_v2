@@ -46,16 +46,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', routes);
-app.use('/users', middleware.auth, users);
-app.use('/items', middleware.auth, items);
-app.use('/tags', middleware.auth, tags);
-app.use('/lists', middleware.auth, lists);
+//authentication using middleware when app is live 
 
-// app.use('/users', users);
-// app.use('/items', items);
-// app.use('/tags', tags);
-// app.use('/lists', lists);
+// app.use('/', routes);
+// app.use('/users', middleware.auth, users);
+// app.use('/items', middleware.auth, items);
+// app.use('/tags', middleware.auth, tags);
+// app.use('/lists', middleware.auth, lists);
+
+
+//no middleware for testing purposes only
+
+app.use('/users', users);
+app.use('/items', items);
+app.use('/tags', tags);
+app.use('/lists', lists);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

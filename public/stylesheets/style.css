@@ -259,7 +259,7 @@ figcaption {
 }
 
 #tag_menu {
-  opacity: 0.9;
+  opacity: 0.85;
   position: fixed;
   bottom: 10px;
   text-align: center;
