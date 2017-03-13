@@ -6,6 +6,7 @@ body {
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 25px;
+  -webkit-backface-visibility: hidden;
 }
 
 #login-body {
@@ -42,7 +43,7 @@ small:hover, #update:hover, #delete:hover, #hide_menu:hover {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.5s;
-  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
 }
 
 #item_model {
