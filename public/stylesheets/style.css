@@ -36,6 +36,13 @@ a {
   display: inline-block;
 }
 
+small:hover, #update:hover, #delete:hover, #hide_menu:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+}
+
 #item_model {
   background-color: #012561 !important;
   margin-bottom: 20px;
@@ -262,12 +269,11 @@ figcaption {
 }
 
 #tag_menu {
-  opacity: 0.95;
   position: fixed;
-  bottom: 10px;
+  bottom: 0px;
   text-align: center;
   z-index: 10;
-  color: #ffffff;
+  color: #ffffff; 
 }
 
 @media (max-width: 999px){
