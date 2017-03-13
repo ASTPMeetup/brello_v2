@@ -41,6 +41,7 @@ small:hover, #update:hover, #delete:hover, #hide_menu:hover {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
   transition-duration: 0.5s;
+  -webkit-backface-visibility: hidden;
 }
 
 #item_model {
