@@ -34,6 +34,7 @@ a {
   padding: 5px;
   border-radius: 5px;
   display: inline-block;
+  -webkit-backface-visibility: hidden;
 }
 
 small:hover, #update:hover, #delete:hover, #hide_menu:hover {
