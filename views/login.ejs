@@ -16,24 +16,26 @@
           </div>
       </div>
     </nav>
-    <h2 id="login_header">Brello App Login</h2>
-    <form action="/login" method="post" class="login_form">
+    <div class="container col-lg-12 col-md-12 col-md-12 col-xs-12">
+      <h2 id="login_header">Brello App Login</h2>
+      <form action="/login" method="post" class="login_form">
+        <br>
+        <h4>Username:</h4>
+          <input type="text" name="username" class="login_input"/>
+        <br>
+        <br>
+        <h4>Password:</h4>
+          <input type="password" name="password" class="login_input"/>
+        <br>
+        <br>
+        <button type="submit" class="button">Submit</button>
+      </form>
       <br>
-      <h4>Username:</h4>
-        <input type="text" name="username" class="login_input"/>
       <br>
       <br>
-      <h4>Password:</h4>
-        <input type="password" name="password" class="login_input"/>
-      <br>
-      <br>
-      <button type="submit" class="button">Submit</button>
-    </form>
-    <br>
-    <br>
-    <br>
-    <h5>Demo login</h5>
-    <p><mark>Username: gameofthrones</mark></p>
-    <p><mark>password: gameofthrones</mark></p>
+      <h5>Demo login</h5>
+      <p><mark>Username: gameofthrones</mark></p>
+      <p><mark>password: gameofthrones</mark></p>
+    </div>
   </body>
 </html>
