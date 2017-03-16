@@ -257,6 +257,10 @@ figcaption {
   #options, #update, #delete {
     height: 30px;
   }
+  .jumbotron, .title_form, #item_form {
+    width: 100% !important;
+  }
+
 }
 
 #add_tag {
@@ -276,7 +280,7 @@ figcaption {
   bottom: 0px;
   text-align: center;
   z-index: 10;
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 @media (max-width: 999px){
