@@ -258,7 +258,7 @@ figcaption {
     height: 30px;
   }
   .jumbotron, .title_form, #item_form {
-    width: 100% !important;
+    width: 400px !important;
   }
 
 }
